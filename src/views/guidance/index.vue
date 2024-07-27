@@ -32,8 +32,6 @@
         <HotKey />
       </Part>
     </div>
-
-    <BackTop />
   </div>
 </template>
 

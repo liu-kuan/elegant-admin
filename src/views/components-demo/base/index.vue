@@ -3,13 +3,11 @@
     <NumberTransitionDemo />
     <LongTextEllipsisDemo />
     <EleDialogDemo />
-    <BackTopDemo />
     <div class="mt-2">敬请期待...</div>
   </div>
 </template>
 
 <script setup lang="ts">
-import BackTopDemo from './BackTopDemo.vue'
 import EleDialogDemo from './DialogDemo.vue'
 import LongTextEllipsisDemo from './LongTextEllipsisDemo.vue'
 import NumberTransitionDemo from './NumberTransitionDemo.vue'

@@ -24,9 +24,9 @@
             >
               <keep-alive :include="keepAliveTabs" :max="maxCachePageCount">
                 <component
+                  v-if="isMainShow"
                   :key="$route.name"
                   :is="Component"
-                  v-if="isMainShow"
                 />
               </keep-alive>
             </Transition>

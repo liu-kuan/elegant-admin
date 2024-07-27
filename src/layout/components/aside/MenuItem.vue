@@ -1,5 +1,5 @@
 <template>
-  <el-sub-menu v-if="item.children" :index="(item.name as string)">
+  <el-sub-menu v-if="item.children" :index="item.name as string">
     <template #title>
       <el-icon v-if="item.meta?.icon">
         <component :is="item.meta.icon" />
@@ -16,11 +16,7 @@
     </menu-item>
   </el-sub-menu>
 
-  <el-menu-item
-    v-else
-    :index="(item.name as string)"
-    @click="onClicked(item.name)"
-  >
+  <el-menu-item v-else :index="item.name as string" @click="onClick(item.name)">
     <el-icon v-if="item.meta?.icon">
       <component :is="item.meta.icon" />
     </el-icon>
@@ -37,7 +33,7 @@ defineProps<{ item: RouteRecordRaw }>()
 
 const router = useRouter()
 
-const onClicked = (name: RouteRecordName | undefined) => {
+const onClick = (name: RouteRecordName | undefined) => {
   router.push({ name })
 }
 </script>
