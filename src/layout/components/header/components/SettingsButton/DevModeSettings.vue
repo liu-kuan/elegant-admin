@@ -1,9 +1,9 @@
 <template>
   <el-divider>开发者选项</el-divider>
 
-  <Tile label="显示开发者工具">
+  <!-- <Tile label="显示开发者工具">
     <el-switch v-model="showDevTools" />
-  </Tile>
+  </Tile> -->
 
   <Tile label="显示元素外轮廓">
     <el-switch v-model="elementOutlineVisible" />

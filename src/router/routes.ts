@@ -3,7 +3,6 @@ import { HomeFilled, Menu } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
 import MdiHelpCircle from '~icons/mdi/help-circle'
-import MdiTools from '~icons/mdi/tools'
 import RouteNames from './route-names'
 
 /**
@@ -24,12 +23,6 @@ export const routes: RouteRecordRaw[] = [
     meta: { label: '首页', icon: HomeFilled, static: true },
   },
   {
-    path: 'guidance',
-    name: RouteNames.Guidance,
-    component: () => import('@/views/guidance/index.vue'),
-    meta: { label: '使用指南', icon: MdiHelpCircle },
-  },
-  {
     path: 'components-demo',
     name: RouteNames.ComponentDemo,
     meta: { label: '组件', icon: Menu },
@@ -44,6 +37,12 @@ export const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: 'guidance',
+    name: RouteNames.Guidance,
+    component: () => import('@/views/guidance/index.vue'),
+    meta: { label: '使用指南', icon: MdiHelpCircle },
+  },
   // 以下页面不在侧边栏显示
   {
     path: 'split-screen',
@@ -55,29 +54,29 @@ export const routes: RouteRecordRaw[] = [
 
 // 测试环境给一个页面用于测试
 if (import.meta.env.DEV) {
-  routes.push({
-    path: 'dev-tools',
-    name: RouteNames.DevTools,
-    meta: { label: '开发者工具', icon: MdiTools },
-    children: [
-      {
-        path: 'mock',
-        name: RouteNames.DevTools_Mock,
-        component: () => import('@/views/dev-tools/mock/index.vue'),
-        meta: {
-          label: '模拟接口管理',
-        },
-      },
-      {
-        path: 'playground',
-        name: RouteNames.DevTools_Playground,
-        component: () => import('@/views/dev-tools/playground/index.vue'),
-        meta: {
-          label: '试验场',
-        },
-      },
-    ],
-  })
+  // routes.push({
+  //   path: 'dev-tools',
+  //   name: RouteNames.DevTools,
+  //   meta: { label: '开发者工具', icon: MdiTools },
+  //   children: [
+  //     {
+  //       path: 'mock',
+  //       name: RouteNames.DevTools_Mock,
+  //       component: () => import('@/views/dev-tools/mock/index.vue'),
+  //       meta: {
+  //         label: '模拟接口管理',
+  //       },
+  //     },
+  //     {
+  //       path: 'playground',
+  //       name: RouteNames.DevTools_Playground,
+  //       component: () => import('@/views/dev-tools/playground/index.vue'),
+  //       meta: {
+  //         label: '试验场',
+  //       },
+  //     },
+  //   ],
+  // })
 }
 
 // 通过一定规则匹配路由
