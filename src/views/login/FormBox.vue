@@ -24,6 +24,8 @@
         />
       </el-form-item>
 
+      <div class="text-size-3">游客登录：账号密码可在控制台查看</div>
+
       <el-button
         class="login-button"
         type="primary"
@@ -40,12 +42,7 @@
 import { useEnterKey } from '@/hooks/use-hot-key'
 import RouteNames from '@/router/route-names'
 import { Lock, User } from '@element-plus/icons-vue'
-import {
-  ElMessage,
-  ElNotification,
-  type FormInstance,
-  type FormRules,
-} from 'element-plus'
+import { ElNotification, type FormInstance, type FormRules } from 'element-plus'
 
 import useMetaStore from '@/stores/meta'
 import { sleep } from '@/utils/time'
@@ -86,6 +83,7 @@ const { token, info } = storeToRefs(useUserStore())
 const form = ref<FormInstance>()
 const isLoading = ref(false)
 
+console.log('游客登录')
 console.log('账号：elegant@admin.com')
 console.log('密码：123456')
 
@@ -116,7 +114,10 @@ const onLogin = () => {
           throw new Error('账号或密码错误')
         }
       } catch (error) {
-        ElMessage.error(`登陆失败，原因：${error}`)
+        ElNotification.error({
+          title: `登陆失败，原因：${error}`,
+          message: '账号密码可在控制台查看',
+        })
       } finally {
         isLoading.value = false
       }
