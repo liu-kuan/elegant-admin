@@ -1,0 +1,31 @@
+:root {
+  --text-size-1: 16px;
+  --text-size-2: 14px;
+  --text-size-3: 12px;
+  --text-size-4: 10px;
+}
+
+@mixin text1 {
+  font-size: $text-size-1;
+  color: $text-color-1;
+}
+
+@mixin text2 {
+  font-size: $text-size-2;
+  color: $text-color-2;
+}
+
+@mixin text3 {
+  font-size: $text-size-3;
+  color: $text-color-3;
+}
+
+@mixin text4 {
+  font-size: $text-size-4;
+  color: $text-color-4;
+}
+
+$text-size-1: var(--text-size-1);
+$text-size-2: var(--text-size-2);
+$text-size-3: var(--text-size-3);
+$text-size-4: var(--text-size-4);

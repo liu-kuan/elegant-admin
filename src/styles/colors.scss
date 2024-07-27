@@ -1,0 +1,37 @@
+// text
+$text-color-1: var(--text-color-1);
+$text-color-2: var(--text-color-2);
+$text-color-3: var(--text-color-3);
+$text-color-4: var(--text-color-4);
+$border-color: var(--el-border-color);
+$border-color-light: var(--el-border-color-light);
+$border-color-lighter: var(--el-border-color-lighter);
+$border-color-dark: var(--el-border-color-dark);
+$color-primary: var(--el-color-primary);
+$color-danger: var(--el-color-danger);
+$color-warning: var(--el-color-warning);
+$color-success: var(--el-color-success);
+$bg-color: var(--bg-color);
+$bg-color-overlay: var(--el-bg-color-overlay);
+$fill-color-light: var(--el-fill-color-light);
+$fill-color: var(--el-fill-color);
+$fill-color-dark: var(--el-fill-color-dark);
+$shadow-color: var(--shadow-color);
+
+:root {
+  --text-color-1: #303133;
+  --text-color-2: #606266;
+  --text-color-3: #909399;
+  --text-color-4: #a8abb2;
+  --bg-color: #f6f6f6;
+  --shadow-color: rgb(0 0 0 / 10%);
+}
+
+:root.dark {
+  --text-color-1: #e5eaf3;
+  --text-color-2: #cfd3dc;
+  --text-color-3: #a3a6ad;
+  --text-color-4: #8d9095;
+  --bg-color: #080808;
+  --shadow-color: rgb(0 0 0 / 60%);
+}

@@ -1,0 +1,39 @@
+// header
+$header-height: 52px;
+
+.header__icon {
+  font-size: 19px;
+  color: $text-color-1;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+// aside
+$aside-width: 230px;
+$aside-width-collapse: 64px;
+$aside-bg-color: var(--aside__bg-color);
+$aside-bg-color-sub: var(--aside__bg-color--sub);
+$aside-bg-color-hover: var(--aside__bg-color--hover);
+$aside-bg-color-active: var(--aside__bg-color--active);
+$aside-text-color: var(--aside__text-color);
+
+// tab-bar
+$tab-bar-height: 44px;
+
+:root {
+  --aside__bg-color: #304156;
+  --aside__bg-color--sub: #253e4f;
+  --aside__bg-color--hover: #263445;
+  --aside__bg-color--active: #1f2d3d;
+  --aside__text-color: #bfcbd9;
+}
+
+:root.dark {
+  --aside__bg-color: var(--el-bg-color-overlay);
+  --aside__bg-color--hover: #121212;
+  --aside__bg-color--active: #0a0a0a;
+  --aside__text-color: #ccc;
+}

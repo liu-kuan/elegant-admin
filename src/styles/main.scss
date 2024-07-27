@@ -1,0 +1,44 @@
+$spacing-xs: 4px;
+$spacing-s: 8px;
+$spacing-m: 12px;
+$spacing-l: 16px;
+$spacing-xl: 20px;
+$card-spacing: 12px;
+$border-radius-1: 0.25rem;
+$border-radius-2: 0.5rem;
+$border-radius-3: 0.75rem;
+$box-shadow: 0 0 2px 1.5px $shadow-color;
+
+@mixin card {
+  box-sizing: border-box;
+  padding: $spacing-l;
+  background-color: $bg-color-overlay;
+  border: 1px solid $border-color-lighter;
+  border-radius: $border-radius-2;
+}
+
+.card {
+  @include card;
+}
+
+@mixin card-hover {
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    padding: 15px;
+    padding: $spacing-l - 1px;
+    border: 2px solid $color-primary;
+  }
+}
+
+// .el-tabs--border-card {
+//   box-sizing: border-box;
+//   overflow: hidden;
+//   border-color: $border-color-lighter;
+//   border-radius: $border-radius-2;
+// }
+
+:deep(.el-drawer__body) {
+  padding-top: 0;
+}
