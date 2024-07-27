@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import RouteNames from './route-names'
 import { routes } from './routes'
 
 // 写在这里的路由是不会展示在菜单栏的页面
 const router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHashHistory('/'),
   routes: [
     {
       path: '/login',
