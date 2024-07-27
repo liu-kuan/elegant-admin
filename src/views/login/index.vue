@@ -43,6 +43,10 @@ useEventListener(window, 'resize', handleResize)
   width: 100vw;
   height: 100vh;
   background-color: $fill-color;
+  background-image: url('@/assets/login-bg.webp');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .form-enter-active,

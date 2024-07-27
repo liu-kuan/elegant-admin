@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="form-box">
     <div class="title">用户登录</div>
 
     <div class="divider"></div>
@@ -129,7 +129,7 @@ useEnterKey(onLogin)
 </script>
 
 <style lang="scss" scoped>
-.content {
+.form-box {
   align-items: center;
   width: 300px;
   padding: 18px 20px;
