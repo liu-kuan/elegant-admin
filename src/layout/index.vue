@@ -26,7 +26,7 @@
                 <component
                   v-if="isMainShow"
                   :key="$route.name"
-                  :is="Component"
+                  :is="h('div', [Component, h(BackTop)])"
                 />
               </keep-alive>
             </Transition>
@@ -43,7 +43,9 @@ import usePreferenceStore from '@/stores/preference'
 import eventBus from '@/utils/event-bus'
 import { useScroll } from '@vueuse/core'
 import { storeToRefs } from 'pinia'
+import { h } from 'vue'
 import Aside from './components/aside/index.vue'
+import BackTop from './components/Backtop.vue'
 import Header from './components/header/index.vue'
 import TabBar from './components/tab-bar/index.vue'
 

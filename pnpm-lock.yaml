@@ -30,8 +30,8 @@ dependencies:
     specifier: ^2.0.9
     version: 2.0.9(echarts@5.5.0)
   element-plus:
-    specifier: ^2.6.1
-    version: 2.7.0(vue@3.4.34)
+    specifier: ^2.7.8
+    version: 2.7.8(vue@3.4.34)
   mitt:
     specifier: ^3.0.1
     version: 3.0.1
@@ -2649,8 +2649,8 @@ packages:
     resolution: {integrity: sha512-3avY1B+vUzNxEgkBDpKOP8WarvUAEwpRaiCL0He5OKWEFxzaOFiq4WoZEZe7qh0ReS7DiWoHMnYoQCKxNZNzSg==}
     dev: true
 
-  /element-plus@2.7.0(vue@3.4.34):
-    resolution: {integrity: sha512-WAiaFLavuWFxof9qwkC27jvkh9nRcNnB506g1vvJSiVaVqjCBWUFCIyJKeN11M1qcv2cS5VV5PfSLjTIkrw87A==}
+  /element-plus@2.7.8(vue@3.4.34):
+    resolution: {integrity: sha512-h6dx2XihAbQaud0v+6O7Fy0b0G3YNplNVH7QnK3csTcvQd4y4raiyMRQpf9EKbRbTMdNrFsqAZrs9ok9DMcJHg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:

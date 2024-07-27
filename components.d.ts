@@ -7,7 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BackTop: typeof import('./src/components/BackTop.vue')['default']
+    BackTop: (typeof import('./src/layout/components/BackTop.vue'))['default']
     Center: typeof import('./src/components/Center.vue')['default']
     Column: typeof import('./src/components/Column.vue')['default']
     DialogContainer: typeof import('./src/components/Dialog/DialogContainer.vue')['default']
@@ -43,7 +43,7 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElOption: typeof import('element-plus/es')['ElOption']
     ElPopover: typeof import('element-plus/es')['ElPopover']
-    ElResult: typeof import('element-plus/es')['ElResult']
+    ElResult: (typeof import('element-plus/es'))['ElResult']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSegmented: typeof import('element-plus/es')['ElSegmented']
     ElSelect: typeof import('element-plus/es')['ElSelect']
@@ -56,7 +56,7 @@ declare module 'vue' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElTree: typeof import('element-plus/es')['ElTree']
     JsonEditor: typeof import('./src/components/JsonEditor.vue')['default']
-    JSONEditor: typeof import('./src/components/JSONEditor.vue')['default']
+    JSONEditor: (typeof import('./src/components/JSONEditor.vue'))['default']
     LongTextEllipsis: typeof import('./src/components/LongTextEllipsis.vue')['default']
     NumberTransition: typeof import('./src/components/NumberTransition.vue')['default']
     PageView: typeof import('./src/components/PageView.vue')['default']
