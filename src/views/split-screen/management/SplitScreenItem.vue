@@ -7,12 +7,12 @@
     }"
     @click="onClick"
   >
-    <div v-if="id && currentSplitScreenInfo" class="form-box">
+    <div v-if="id && currentSplitScreenInfo" class="content">
       <Row class="header">
         <LongTextEllipsis
           :content="`“${$router.resolve({ name: currentSplitScreenInfo.pages[0] }).meta.label}” 与 “${$router.resolve({ name: currentSplitScreenInfo.pages[1] }).meta.label}”`"
           :max-line="1"
-          type="tooltip"
+          type="popover"
         />
 
         <el-tag
@@ -324,7 +324,7 @@ const spacing = '5px'
     background-color: var(--el-color-primary-light-9);
   }
 
-  .form-box {
+  .content {
     display: flex;
     flex-direction: column;
     height: 100%;

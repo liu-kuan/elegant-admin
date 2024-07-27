@@ -6,10 +6,10 @@
         width: `${width}px`,
       }"
     >
-      <LongTextEllipsis :content="content" :max-line />
+      <LongTextEllipsis :content="content" :max-line :type />
     </div>
 
-    <ElForm class="mt-4 flex items-start" inline>
+    <ElForm class="mt-4 flex items-start flex-wrap" inline>
       <ElFormItem label="内容">
         <ElInput type="textarea" autosize v-model="content" class="w-100!" />
       </ElFormItem>
@@ -20,6 +20,13 @@
 
       <ElFormItem label="宽度">
         <ElInputNumber v-model="width" :min="50" :step="10" />
+      </ElFormItem>
+
+      <ElFormItem label="展示全部方式">
+        <ElSelect v-model="type" class="w-30!">
+          <ElOption label="弹窗" value="dialog" />
+          <ElOption label="Popover" value="popover" />
+        </ElSelect>
       </ElFormItem>
     </ElForm>
   </Card>
@@ -33,6 +40,7 @@ const content = ref(
 )
 const maxLine = ref(3)
 const width = ref(100)
+const type = ref<'dialog' | 'popover'>('dialog')
 </script>
 
 <style lang="scss" scoped>

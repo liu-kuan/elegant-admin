@@ -13,7 +13,7 @@
       <LongTextEllipsis
         :content="title"
         :max-line="1"
-        type="tooltip"
+        type="popover"
         class="title"
         v-if="title"
       />

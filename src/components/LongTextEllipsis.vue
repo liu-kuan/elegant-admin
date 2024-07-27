@@ -1,7 +1,7 @@
 <template>
   <div class="long-text-ellipsis">
     <template v-if="type === 'dialog'">
-      <div class="form-box" ref="contentRef">
+      <div class="content" ref="contentRef">
         {{ String(content) }}
       </div>
 
@@ -16,16 +16,19 @@
       </div>
     </template>
 
-    <el-tooltip
+    <el-popover
       v-else
       :disabled="!isEllipsis"
       placement="top"
       :content="String(content)"
+      width="50%"
     >
-      <div class="form-box" ref="contentRef">
-        {{ String(content) }}
-      </div>
-    </el-tooltip>
+      <template #reference>
+        <div class="content" ref="contentRef">
+          {{ String(content) }}
+        </div>
+      </template>
+    </el-popover>
   </div>
 </template>
 
@@ -37,7 +40,7 @@ const props = withDefaults(
   defineProps<{
     content: any
     maxLine: number
-    type?: 'dialog' | 'tooltip'
+    type?: 'dialog' | 'popover'
   }>(),
   {
     type: 'dialog',
@@ -89,7 +92,7 @@ const showMore = () => {
 </script>
 
 <style lang="scss" scoped>
-.form-box {
+.content {
   display: -webkit-box;
   overflow: hidden;
 
