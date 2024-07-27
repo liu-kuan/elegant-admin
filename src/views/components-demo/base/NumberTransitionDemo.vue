@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import Card from './Card.vue'
+import Card from '../Card.vue'
 
 const number = ref(0)
 const duration = ref(0)

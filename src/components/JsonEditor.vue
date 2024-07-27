@@ -3,7 +3,7 @@
     v-model="modelValue"
     :show-btns="false"
     :mode="readonly ? 'view' : 'code'"
-    :modes="[]"
+    :modes="readonly ? [] : ['view', 'code']"
     class="json-editor"
     v-bind="$attrs"
   />

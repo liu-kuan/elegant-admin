@@ -16,7 +16,7 @@
 <script setup lang="tsx">
 import Dialog from '@/components/Dialog'
 import { ElButton, ElInput } from 'element-plus'
-import Card from './Card.vue'
+import Card from '../Card.vue'
 
 const onClickShowMessageDialog = () => {
   Dialog({

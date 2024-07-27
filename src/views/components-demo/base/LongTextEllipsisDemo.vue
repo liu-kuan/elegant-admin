@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import Card from './Card.vue'
+import Card from '../Card.vue'
 
 const content = ref(
   '很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！',

@@ -35,6 +35,14 @@ export const routes: RouteRecordRaw[] = [
           label: '基础组件',
         },
       },
+      {
+        path: 'json-editor',
+        name: RouteNames.ComponentDemo_JsonEditor,
+        component: () => import('@/views/components-demo/JsonEditorDemo.vue'),
+        meta: {
+          label: 'JSON 编辑器',
+        },
+      },
     ],
   },
   {

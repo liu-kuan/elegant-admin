@@ -33,6 +33,7 @@ const enum RouteNames {
   // 组件
   ComponentDemo = 'Components',
   ComponentDemo_Base = 'ComponentDemo_Base',
+  ComponentDemo_JsonEditor = 'ComponentDemo_JsonEditor',
 }
 
 export default RouteNames
