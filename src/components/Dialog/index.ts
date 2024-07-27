@@ -11,18 +11,18 @@ import type { BeforeClose, DialogAction, DialogOptions } from './types'
  * 如果想返回之前做一些事，比如给按钮 loading 添加效果，可使用 beforeClose，使用方法如下
  * ```ts
  * Dialog(header: 'title', content: 'content',
- *   beforeClose: async (action, { isLoadingConfirm }, done) => {
+ *   beforeClose: async (action, { isLoadingConfirm }, close) => {
  *     if (action === 'confirm') {
  *       try {
  *         isLoadingConfirm.value = true
  *         await fn()
- *         done()
+ *         close()
  *       } catch {
  *       } finally {
  *         isLoadingConfirm.value = false
  *       }
  *     } else {
- *       done()
+ *       close()
  *     }
  *   }
  * )

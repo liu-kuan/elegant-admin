@@ -6,11 +6,11 @@
 
     <ElForm class="mt-4" inline>
       <ElFormItem label="目标值">
-        <ElInputNumber v-model="targetNumber" />
+        <ElInputNumber v-model="targetNumber" :step="100" />
       </ElFormItem>
 
       <ElFormItem label="过渡时间(s)">
-        <ElInputNumber v-model="targetDuration" />
+        <ElInputNumber v-model="targetDuration" :step="100" />
       </ElFormItem>
 
       <ElFormItem>

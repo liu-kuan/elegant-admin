@@ -87,13 +87,15 @@ const onClickShowConfirmBtnLoadingDialog = () => {
   Dialog({
     header: '表单弹窗',
     content: '点击确认按钮后，确认按钮 loading 1s',
-    beforeClose: (action, { isLoadingConfirm }, done) => {
+    beforeClose: (action, { isLoadingConfirm }, close) => {
       if (action === 'confirm') {
         isLoadingConfirm.value = true
         setTimeout(() => {
-          done()
+          close()
           isLoadingConfirm.value = false
         }, 1000)
+      } else {
+        close()
       }
     },
     options: {

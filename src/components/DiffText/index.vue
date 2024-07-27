@@ -16,9 +16,11 @@ const html = computed(() => getDiffAsHtml(props.oldText, props.newText))
 <style lang="scss" scoped>
 :deep(ins) {
   color: green;
+  background-color: var(--el-color-success-light-7);
 }
 
 :deep(del) {
-  color: red;
+  color: var(--el-color-danger);
+  background-color: var(--el-color-danger-light-7);
 }
 </style>
