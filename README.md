@@ -22,6 +22,10 @@ pnpm run dev
 pnpm run build <mode>
 ```
 
+## 账号密码：
+
+可在登录页面控制台查看预览用登录账号密码
+
 ## 添加页面
 
 1. 在 `src/views` 中添加页面

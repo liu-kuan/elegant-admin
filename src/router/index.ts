@@ -4,7 +4,7 @@ import { routes } from './routes'
 
 // 写在这里的路由是不会展示在菜单栏的页面
 const router = createRouter({
-  history: createWebHistory('/app/admin/'),
+  history: createWebHistory('/'),
   routes: [
     {
       path: '/login',

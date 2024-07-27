@@ -51,6 +51,6 @@ export default defineConfig({
       },
     },
   },
-  base: '/app/admin/',
+  base: '/',
   build: buildOptions,
 })
