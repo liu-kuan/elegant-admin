@@ -43,6 +43,14 @@ export const routes: RouteRecordRaw[] = [
           label: 'JSON 编辑器',
         },
       },
+      {
+        path: 'diff-html',
+        name: RouteNames.ComponentDemo_DiffText,
+        component: () => import('@/views/components-demo/DiffTextDemo.vue'),
+        meta: {
+          label: '文案差异展示',
+        },
+      },
     ],
   },
   {

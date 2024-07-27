@@ -34,6 +34,7 @@ const enum RouteNames {
   ComponentDemo = 'Components',
   ComponentDemo_Base = 'ComponentDemo_Base',
   ComponentDemo_JsonEditor = 'ComponentDemo_JsonEditor',
+  ComponentDemo_DiffText = 'ComponentDemo_DiffText',
 }
 
 export default RouteNames

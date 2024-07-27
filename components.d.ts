@@ -11,6 +11,7 @@ declare module 'vue' {
     Center: typeof import('./src/components/Center.vue')['default']
     Column: typeof import('./src/components/Column.vue')['default']
     DialogContainer: typeof import('./src/components/Dialog/DialogContainer.vue')['default']
+    DiffText: typeof import('./src/components/DiffText/index.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
