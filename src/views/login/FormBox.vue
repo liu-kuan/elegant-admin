@@ -137,7 +137,6 @@ useEnterKey(onLogin)
   margin-top: 2.5vh;
   background-color: $fill-color-light;
   border-radius: $border-radius-2;
-  box-shadow: 0 10px 25px #111;
 }
 
 .title {

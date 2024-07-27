@@ -7,6 +7,10 @@ Email: **kuan_liu@foxmail.com**
 
 ELEGANT-ADMIN 是基于 Vue 3、TypeScript、Vite、Vue-Router、Pinia、Element Plus、SASS、UNOCSS 等前沿技术开发的后台管理系统模板
 
+## 在线体验
+
+网址：https://elegant-admin.vercel.app/home
+
 ## 启动 / 打包
 
 包管理器推荐使用 pnpm
