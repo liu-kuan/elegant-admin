@@ -11,6 +11,8 @@ ELEGANT-ADMIN 是基于 Vue 3、TypeScript、Vite、Vue-Router、Pinia、Element
 
 网址：https://elegant-admin.vercel.app/home
 
+可在登录页面控制台查看预览用登录*账号，密码*
+
 ## 启动 / 打包
 
 包管理器推荐使用 pnpm
@@ -22,19 +24,17 @@ pnpm i
 # 开启本地调试服务器
 pnpm run dev
 
-# 打包 mode 为 .env 文件后缀，例如 `pnpm run build dev`
+# 打包 mode 为 .env 文件后缀，例如打包开发环境 `pnpm run build dev`，打包生产环境 `pnpm run build prod`
 pnpm run build <mode>
 ```
-
-## 账号密码：
-
-可在登录页面控制台查看预览用登录账号密码
 
 ## 添加页面
 
 1. 在 `src/views` 中添加页面
 
 2. 在 `src/router/routes.ts` 中添加动态路由和静态路由
+
+3. 在 `src/router/routes.ts` 中注册的路由会展示在侧边栏菜单中，如不想展示在菜单栏可在 meta 中将 hide 设置为 true
 
 ## 目录规范
 
@@ -84,9 +84,41 @@ pnpm run build <mode>
 1. 通用的 **组件、hooks、工具** 分别放在 `src/components`、`src/hooks`、`src/utils` 目录下
 2. 只有当前文件夹使用的 **组件、hooks、工具** 放在当前文件夹下的 `./components`、`./hooks`、`./utils` 文件夹中
 
-### icons
+## icons
 
 为保证图标样式效果一致可遵循一下做法：
 
 - 菜单栏图标使用 @element-plus/icons-vue 或 https://icones.js.org/collection/mdi
 - 主界面图标推荐使用 @ant-design/icons-vue
+
+## 自动引入
+
+已在 Vite 配置了部分常用的自动引入的内容：
+
+```ts
+export default defineConfig({
+  plugins: [
+    // ...
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+      imports: ['vue', 'vue-router', 'pinia'],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+      dirs: ['src/components'],
+    }),
+  ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `
+          @import '@/styles/colors.scss';
+          @import '@/styles/text.scss';
+          @import '@/styles/layout.scss';
+          @import '@/styles/main.scss';
+        `,
+      },
+    },
+  },
+})
+```

@@ -20,9 +20,6 @@ dependencies:
   axios:
     specifier: ^1.6.8
     version: 1.6.8
-  chance:
-    specifier: ^1.1.11
-    version: 1.1.11
   diff-match-patch:
     specifier: ^1.0.5
     version: 1.0.5
@@ -2343,10 +2340,6 @@ packages:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
     dev: true
-
-  /chance@1.1.11:
-    resolution: {integrity: sha512-kqTg3WWywappJPqtgrdvbA380VoXO2eu9VCV895JgbyHsaErXdyHK9LOZ911OvAk6L0obK7kDk9CGs8+oBawVA==}
-    dev: false
 
   /chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}

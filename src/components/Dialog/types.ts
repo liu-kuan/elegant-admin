@@ -3,6 +3,15 @@ import type { Component, Ref } from 'vue'
 
 export type DialogAction = 'confirm' | 'cancel' | 'close'
 
+export type BeforeClose = (
+  action: DialogAction,
+  loading: {
+    isLoadingConfirm: Ref<boolean>
+    isLoadingCancel: Ref<boolean>
+  },
+  done: () => void,
+) => void
+
 export interface DialogOptions {
   /**
    * 绑定到 ElDialog 上的属性
@@ -16,12 +25,4 @@ export interface DialogOptions {
   cancelButtonIcon?: Component
   hideCancelButton?: boolean
   hideFooter?: boolean
-  beforeClose?: (
-    action: DialogAction,
-    loading: {
-      isLoadingConfirm: Ref<boolean>
-      isLoadingCancel: Ref<boolean>
-    },
-    done: () => void,
-  ) => void
 }

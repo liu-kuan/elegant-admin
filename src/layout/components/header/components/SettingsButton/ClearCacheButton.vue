@@ -5,20 +5,20 @@
 </template>
 
 <script setup lang="ts">
-import EleDialog from '@/components/EleDialog'
+import Dialog from '@/components/Dialog'
 import { getLocalStorageKeysById, ids } from '@/config/pinia'
 import { ClearOutlined } from '@ant-design/icons-vue'
 
 const onClear = async () => {
-  const action = await EleDialog(
-    '清理缓存',
-    '清理缓存会将偏好设置等缓存数据清空，确定清理吗？',
-    {
+  const action = await Dialog({
+    header: '清理缓存',
+    content: '清理缓存会将偏好设置等缓存数据清空，确定清理吗？',
+    options: {
       attrs: {
         width: '380',
       },
     },
-  ).action
+  }).action
 
   if (action === 'confirm') {
     handleClear()

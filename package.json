@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode dev",
-    "build": "vite build",
+    "build": "vite build --mode",
     "preview": "vite preview",
     "preinstall": "npx only-allow pnpm",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
@@ -22,7 +22,6 @@
     "@sentry/vue": "^7.107.0",
     "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
-    "chance": "^1.1.11",
     "diff-match-patch": "^1.0.5",
     "echarts": "^5.5.0",
     "echarts-gl": "^2.0.9",

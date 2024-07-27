@@ -5,7 +5,7 @@
       <div class="font-size-3 color-2 mt-1">介绍：{{ des }}</div>
     </div>
 
-    <div>
+    <div class="mt-4">
       <slot></slot>
     </div>
   </div>

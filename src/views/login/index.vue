@@ -1,8 +1,10 @@
 <template>
   <div class="login-page">
-    <Transition appear name="form">
-      <FormBox />
+    <Transition appear name="title">
+      <div class="title">𝔼𝕃𝔼𝔾𝔸ℕ𝕋-𝔸𝔻𝕄𝕀ℕ</div>
     </Transition>
+
+    <FormBox />
 
     <div class="footer-container" v-if="isHideLogo">
       <Transition appear name="copyright">
@@ -38,6 +40,7 @@ useEventListener(window, 'resize', handleResize)
 <style lang="scss" scoped>
 .login-page {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -49,15 +52,21 @@ useEventListener(window, 'resize', handleResize)
   background-size: cover;
 }
 
-.form-enter-active,
-.form-leave-active {
+.title {
+  margin-bottom: 20px;
+  font-size: 40px;
+  color: #fff;
+}
+
+.title-enter-active,
+.title-leave-active {
   transition: all 0.8s ease;
 }
 
-.form-enter-from,
-.form-leave-to {
+.title-enter-from,
+.title-leave-to {
   opacity: 0;
-  transform: translateY(88px);
+  transform: translateY(50px);
 }
 
 .footer-container {

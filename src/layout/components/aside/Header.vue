@@ -7,7 +7,7 @@
     />
 
     <Transition>
-      <div class="label" v-if="!isMenuCollapse">EL-ADMIN</div>
+      <div class="label" v-if="!isMenuCollapse">𝙴𝙻𝙴𝙶𝙰𝙽𝚃-𝙰𝙳𝙼𝙸𝙽</div>
     </Transition>
   </div>
 </template>
@@ -48,10 +48,11 @@ const onLogoClicked = () => {
 
   .label {
     position: absolute;
-    left: 66px;
+    left: 56px;
     aspect-ratio: 435 / 33;
-    font-size: 22px;
-    letter-spacing: 4px;
+    font-size: 20px;
+
+    // letter-spacing: 4px;
     filter: brightness(0) invert(1);
   }
 }

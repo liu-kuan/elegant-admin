@@ -1,10 +1,10 @@
 <template>
   <Card name="NumberTransition" des="数字会有过度效果地变化到目标值">
-    <div class="mt-4 px-5 py-3 border-rd-1 w-fit border-solid">
+    <div class="px-5 py-3 border-rd-1 w-fit border-solid">
       <NumberTransition :value="number" :duration="duration" />
     </div>
 
-    <ElForm class="mt-5" inline>
+    <ElForm class="mt-4" inline>
       <ElFormItem label="目标值">
         <ElInputNumber v-model="targetNumber" />
       </ElFormItem>

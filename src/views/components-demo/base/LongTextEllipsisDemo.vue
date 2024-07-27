@@ -1,7 +1,7 @@
 <template>
   <Card name="LongTextEllipsis" des="文字过长省略">
     <div
-      class="mt-4 px-5 py-3 border-rd-1 border-solid"
+      class="px-5 py-3 border-rd-1 border-solid"
       :style="{
         width: `${width}px`,
       }"
@@ -9,7 +9,7 @@
       <LongTextEllipsis :content="content" :max-line />
     </div>
 
-    <ElForm class="mt-5 flex items-start" inline>
+    <ElForm class="mt-4 flex items-start" inline>
       <ElFormItem label="内容">
         <ElInput type="textarea" autosize v-model="content" class="w-100!" />
       </ElFormItem>
@@ -32,7 +32,7 @@ const content = ref(
   '很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！很长，非常长，特别长的文案！long text！',
 )
 const maxLine = ref(3)
-const width = ref(50)
+const width = ref(100)
 </script>
 
 <style lang="scss" scoped>

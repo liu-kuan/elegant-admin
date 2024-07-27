@@ -1,16 +1,16 @@
 import { createApp } from 'vue'
 import type { JSX } from 'vue/jsx-runtime'
 import DialogContainer from './DialogContainer.vue'
-import type { DialogAction, DialogOptions } from './types'
+import type { BeforeClose, DialogAction, DialogOptions } from './types'
 
 /**
  * - 点击 confirm 按钮返回 'confirm'
  * - 点击 cancel 按钮返回 'cancel'
  * - 点击 空白区域或者关闭 按钮返回 'close'
  *
- * 如果想返回之前做一些事，比如给按钮 loading 添加效果，可使用 options.beforeClose，使用方法如下
+ * 如果想返回之前做一些事，比如给按钮 loading 添加效果，可使用 beforeClose，使用方法如下
  * ```ts
- * EleDialog('title', 'content', {
+ * Dialog(header: 'title', content: 'content',
  *   beforeClose: async (action, { isLoadingConfirm }, done) => {
  *     if (action === 'confirm') {
  *       try {
@@ -25,14 +25,22 @@ import type { DialogAction, DialogOptions } from './types'
  *       done()
  *     }
  *   }
- * })
+ * )
  * ```
  */
-const EleDialog = (
-  title: string | JSX.Element | Component | undefined,
-  content: string | JSX.Element | Component,
-  options?: DialogOptions,
-) => {
+const Dialog = ({
+  header,
+  content,
+  footer,
+  beforeClose,
+  options,
+}: {
+  header?: string | JSX.Element | Component
+  content: string | JSX.Element | Component
+  footer?: JSX.Element | Component
+  beforeClose?: BeforeClose
+  options?: DialogOptions
+}) => {
   let action: DialogAction = 'close'
   const el = document.createElement('div')
   const instance = ref<InstanceType<typeof DialogContainer>>()
@@ -50,15 +58,16 @@ const EleDialog = (
   return {
     action: new Promise<DialogAction>((resolve) => {
       const app = createApp(DialogContainer, {
-        title,
+        header,
         content,
+        footer,
         options,
         onAction: async (_action: DialogAction) => {
           action = _action
 
-          if (options?.beforeClose) {
+          if (beforeClose) {
             await new Promise<void>((resolve) => {
-              options.beforeClose!(
+              beforeClose(
                 action,
                 {
                   isLoadingConfirm,
@@ -93,4 +102,4 @@ const EleDialog = (
   }
 }
 
-export default EleDialog
+export default Dialog

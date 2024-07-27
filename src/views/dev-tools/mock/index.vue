@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import EleDialog from '@/components/EleDialog'
+import Dialog from '@/components/Dialog'
 import RouteNames from '@/router/route-names'
 import useDevModeStore from '@/stores/dev-mode'
 import type { MockApi } from '@/types/mock'
@@ -90,7 +90,7 @@ const onUpsert = (api?: MockApi) => {
 }
 
 const onDelete = async (api: MockApi) => {
-  const { action } = EleDialog('删除模拟接口', '确定删除该删除模拟接口吗？', {
+  const { action } = Dialog('删除模拟接口', '确定删除该删除模拟接口吗？', {
     confirmButtonType: 'danger',
     attrs: {
       width: 360,

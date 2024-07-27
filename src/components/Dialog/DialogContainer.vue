@@ -4,13 +4,13 @@
     <el-dialog
       append-to-body
       :model-value="isShow"
-      :title="!title || typeof title === 'string' ? title : void 0"
+      :title="!header || typeof header === 'string' ? header : void 0"
       v-bind="options?.attrs"
       @close="emit('close')"
       @closed="emit('closed')"
     >
-      <template #header v-if="title && typeof title !== 'string'">
-        <component :is="title" />
+      <template #header v-if="header && typeof header !== 'string'">
+        <component :is="header" />
       </template>
 
       <template v-if="typeof content === 'string'">
@@ -19,24 +19,30 @@
       <component v-else :is="content" />
 
       <template #footer v-if="!options?.hideFooter">
-        <el-button
-          v-if="!options?.hideCancelButton"
-          @click="emit('action', 'cancel')"
-          :icon="options?.cancelButtonIcon"
-          :type="options?.cancelButtonType"
-          :loading="isLoadingCancel"
-        >
-          {{ options?.cancelButtonText ?? '取消' }}
-        </el-button>
+        <template v-if="footer">
+          <component :is="footer" />
+        </template>
 
-        <el-button
-          :type="options?.confirmButtonType ?? 'primary'"
-          :icon="options?.confirmButtonIcon"
-          @click="emit('action', 'confirm')"
-          :loading="isLoadingConfirm"
-        >
-          {{ options?.confirmButtonText ?? '确认' }}
-        </el-button>
+        <template v-else>
+          <el-button
+            v-if="!options?.hideCancelButton"
+            @click="emit('action', 'cancel')"
+            :icon="options?.cancelButtonIcon"
+            :type="options?.cancelButtonType"
+            :loading="isLoadingCancel"
+          >
+            {{ options?.cancelButtonText ?? '取消' }}
+          </el-button>
+
+          <el-button
+            :type="options?.confirmButtonType ?? 'primary'"
+            :icon="options?.confirmButtonIcon"
+            @click="emit('action', 'confirm')"
+            :loading="isLoadingConfirm"
+          >
+            {{ options?.confirmButtonText ?? '确认' }}
+          </el-button>
+        </template>
       </template>
     </el-dialog>
   </el-config-provider>
@@ -48,8 +54,9 @@ import type { JSX } from 'vue/jsx-runtime'
 import type { DialogAction, DialogOptions } from './types'
 
 defineProps<{
-  title?: string | JSX.Element | Component
+  header?: string | JSX.Element | Component
   content: string | JSX.Element | Component
+  footer?: JSX.Element | Component
   options?: DialogOptions
 }>()
 

@@ -1,41 +1,43 @@
 <template>
-  <div class="form-box">
-    <div class="title">用户登录</div>
+  <Transition appear>
+    <div class="form-box">
+      <div class="title">用户登录</div>
 
-    <div class="divider"></div>
+      <div class="divider"></div>
 
-    <el-form ref="form" :model="user" :rules="rules" inline-message>
-      <el-form-item prop="email">
-        <el-input
-          :prefix-icon="User"
-          size="large"
-          placeholder="Email"
-          v-model="user.email"
-        />
-      </el-form-item>
+      <el-form ref="form" :model="user" :rules="rules" inline-message>
+        <el-form-item prop="email">
+          <el-input
+            :prefix-icon="User"
+            size="large"
+            placeholder="Email"
+            v-model="user.email"
+          />
+        </el-form-item>
 
-      <el-form-item prop="password">
-        <el-input
-          :prefix-icon="Lock"
-          size="large"
-          placeholder="密码"
-          v-model="user.password"
-          show-password
-        />
-      </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            :prefix-icon="Lock"
+            size="large"
+            placeholder="密码"
+            v-model="user.password"
+            show-password
+          />
+        </el-form-item>
 
-      <div class="text-size-3">游客登录：账号密码可在控制台查看</div>
+        <div class="text-size-3">游客登录：账号密码可在控制台查看</div>
 
-      <el-button
-        class="login-button"
-        type="primary"
-        :loading="isLoading"
-        @click="onLogin"
-      >
-        登录
-      </el-button>
-    </el-form>
-  </div>
+        <el-button
+          class="login-button"
+          type="primary"
+          :loading="isLoading"
+          @click="onLogin"
+        >
+          登录
+        </el-button>
+      </el-form>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -134,14 +136,25 @@ useEnterKey(onLogin)
   align-items: center;
   width: 300px;
   padding: 18px 20px;
-  margin-top: 2.5vh;
   background-color: $fill-color-light;
   border-radius: $border-radius-2;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.8s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(88px);
 }
 
 .title {
   @include text1;
 
+  margin-bottom: 20px;
   font-weight: bold;
   text-align: center;
 }

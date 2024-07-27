@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="tsx">
-import EleDialog from '@/components/EleDialog'
+import Dialog from '@/components/Dialog'
 import { useResizeObserver } from '@vueuse/core'
 
 const props = withDefaults(
@@ -75,10 +75,14 @@ useResizeObserver(contentRef, (entries) => {
 })
 
 const showMore = () => {
-  EleDialog('详细内容', <div>{String(props.content)}</div>, {
-    hideFooter: true,
-    attrs: {
-      width: '60%',
+  Dialog({
+    header: '详细内容',
+    content: <div>{String(props.content)}</div>,
+    options: {
+      hideFooter: true,
+      attrs: {
+        width: '60%',
+      },
     },
   })
 }
