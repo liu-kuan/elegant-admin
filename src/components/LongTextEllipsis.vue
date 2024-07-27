@@ -1,7 +1,7 @@
 <template>
   <div class="long-text-ellipsis">
     <template v-if="type === 'dialog'">
-      <div class="content" ref="contentRef">
+      <div class="form-box" ref="contentRef">
         {{ String(content) }}
       </div>
 
@@ -24,7 +24,7 @@
       width="50%"
     >
       <template #reference>
-        <div class="content" ref="contentRef">
+        <div class="form-box" ref="contentRef">
           {{ String(content) }}
         </div>
       </template>
@@ -92,7 +92,7 @@ const showMore = () => {
 </script>
 
 <style lang="scss" scoped>
-.content {
+.form-box {
   display: -webkit-box;
   overflow: hidden;
 

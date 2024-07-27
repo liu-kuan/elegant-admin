@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="content">
+    <div class="form-box">
       <Part title="开发者">
         1. 前端：刘宽。
         <br />
@@ -61,7 +61,7 @@ defineOptions({
   justify-content: space-between;
 }
 
-.content {
+.form-box {
   margin-right: 30px;
 }
 

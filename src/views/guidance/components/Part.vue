@@ -1,7 +1,7 @@
 <template>
   <div class="part">
     <h1>{{ title }}</h1>
-    <div class="content" v-if="$slots.default">
+    <div class="form-box" v-if="$slots.default">
       <slot></slot>
     </div>
   </div>
@@ -24,7 +24,7 @@ h1 {
   font-weight: normal;
 }
 
-.content {
+.form-box {
   @include text2;
 
   line-height: 22px;
