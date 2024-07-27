@@ -1,5 +1,5 @@
 <template>
-  <EleCenter>
+  <Center>
     <el-button type="primary" @click="isHorizontal = !isHorizontal"
       >改为{{ isHorizontal ? '左右' : '上下' }}分屏</el-button
     >
@@ -7,7 +7,7 @@
     <el-button type="primary" @click="onSwitchPages"
       >{{ isHorizontal ? '上下' : '左右' }}页面交换</el-button
     >
-  </EleCenter>
+  </Center>
 
   <div
     class="screen"

@@ -4,10 +4,7 @@
       v-for="(item, index) in breadcrumbList"
       :key="item.name"
     >
-      <EleRow
-        class="item"
-        :class="{ last: index === breadcrumbList.length - 1 }"
-      >
+      <Row class="item" :class="{ last: index === breadcrumbList.length - 1 }">
         <el-icon v-if="item.meta?.icon">
           <component :is="item.meta.icon" />
         </el-icon>
@@ -15,7 +12,7 @@
         <div>
           {{ item.meta.label }}
         </div>
-      </EleRow>
+      </Row>
     </el-breadcrumb-item>
   </el-breadcrumb>
 </template>

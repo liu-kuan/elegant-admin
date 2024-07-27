@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'EleCenter',
+  name: 'Center',
 })
 
 withDefaults(

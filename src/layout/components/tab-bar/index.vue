@@ -9,7 +9,7 @@
     ></div>
 
     <div class="scroll-container" ref="tabBarRef">
-      <EleRow>
+      <Row>
         <Tab
           class="tab"
           v-for="(tab, index) in tabs"
@@ -26,7 +26,7 @@
               : tab.meta.label
           }}
         </Tab>
-      </EleRow>
+      </Row>
 
       <Transition>
         <ul

@@ -46,7 +46,7 @@
     </template>
 
     <template #header v-if="column.tip">
-      <EleRow>
+      <Row>
         {{ column.label }}
         <el-popover :width="column.tipWidth" placement="top">
           <div class="text-3.25">
@@ -60,7 +60,7 @@
             </div>
           </template>
         </el-popover>
-      </EleRow>
+      </Row>
     </template>
   </el-table-column>
 </template>

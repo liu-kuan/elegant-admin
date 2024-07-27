@@ -1,5 +1,5 @@
 <template>
-  <EleRow class="tile">
+  <Row class="tile">
     <div class="label">{{ label }}</div>
     <el-popover :width="tipWidth" v-if="tip || $slots.tip" placement="top">
       <div class="text-3.25">
@@ -16,9 +16,9 @@
       </template>
     </el-popover>
 
-    <EleSpacer />
+    <Spacer />
     <slot />
-  </EleRow>
+  </Row>
 </template>
 
 <script setup lang="ts">

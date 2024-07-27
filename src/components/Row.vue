@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: 'EleRow',
+  name: 'Row',
 })
 
 withDefaults(

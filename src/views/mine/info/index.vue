@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <EleRow class="mb-2.5">
+    <Row class="mb-2.5">
       您的资料
       <el-tooltip
         :content="`暂不支持由用户编辑自己的资料，如需更改请联系${defaultAdminUsername}`"
@@ -8,13 +8,13 @@
       >
         <MdiInformation class="info" />
       </el-tooltip>
-    </EleRow>
+    </Row>
 
     <div class="user-info">
       <div class="name">{{ username }}</div>
       <div class="email">Email: {{ email }}</div>
 
-      <EleSpacer />
+      <Spacer />
 
       <div class="role">角色: xxx</div>
 
@@ -22,7 +22,7 @@
     </div>
 
     <div class="permission">
-      <EleRow class="mt-5 mb-2.5">
+      <Row class="mt-5 mb-2.5">
         您的权限
         <el-tooltip
           :content="`您当前拥有以下的权限，如需更多权限请联系${defaultAdminUsername}`"
@@ -30,7 +30,7 @@
         >
           <MdiInformation class="info" />
         </el-tooltip>
-      </EleRow>
+      </Row>
     </div>
 
     <BackTop />

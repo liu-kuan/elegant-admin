@@ -17,7 +17,7 @@
       />
 
       <el-divider>
-        <EleRow>
+        <Row>
           分屏列表
           <el-button
             style="margin-left: 12px"
@@ -25,7 +25,7 @@
             @click="onPositioning"
             >定位到当前分屏</el-button
           >
-        </EleRow>
+        </Row>
       </el-divider>
     </template>
 

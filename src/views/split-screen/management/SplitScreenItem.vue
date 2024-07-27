@@ -8,7 +8,7 @@
     @click="onClick"
   >
     <div v-if="id && currentSplitScreenInfo" class="form-box">
-      <EleRow class="header">
+      <Row class="header">
         <LongTextEllipsis
           :content="`“${$router.resolve({ name: currentSplitScreenInfo.pages[0] }).meta.label}” 与 “${$router.resolve({ name: currentSplitScreenInfo.pages[1] }).meta.label}”`"
           :max-line="1"
@@ -75,7 +75,7 @@
             @click.stop="onRemove"
           />
         </el-tooltip>
-      </EleRow>
+      </Row>
 
       <div
         class="view"

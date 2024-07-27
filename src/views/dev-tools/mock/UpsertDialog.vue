@@ -18,7 +18,7 @@
         <el-input v-model="req.name" placeholder="请输入名称" class="w-84!" />
       </el-form-item>
 
-      <EleRow>
+      <Row>
         <el-form-item prop="method" label="请求方法">
           <el-select v-model="req.method" class="w-40!">
             <el-option label="所有" value="ALL" />
@@ -41,7 +41,7 @@
             class="w-40!"
           />
         </el-form-item>
-      </EleRow>
+      </Row>
 
       <el-form-item prop="url" label="接口地址">
         <el-input

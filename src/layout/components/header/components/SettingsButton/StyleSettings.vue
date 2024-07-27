@@ -4,10 +4,10 @@
   <Tile label="主题模式">
     <el-segmented v-model="theme" :options="options" size="default">
       <template #default="{ item }: { item: Option }">
-        <EleRow>
+        <Row>
           <component :is="item.icon" />
           <div class="ml-1">{{ item.label }}</div>
-        </EleRow>
+        </Row>
       </template>
     </el-segmented>
   </Tile>

@@ -6,7 +6,7 @@
 
     <Breadcrumb />
 
-    <EleSpacer />
+    <Spacer />
 
     <Search />
 

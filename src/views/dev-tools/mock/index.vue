@@ -30,7 +30,7 @@
         </template>
 
         <template #custom:operation="{ row }">
-          <EleRow justify-content="center">
+          <Row justify-content="center">
             <el-button
               size="small"
               type="primary"
@@ -46,7 +46,7 @@
               @click="onDelete(row)"
               >删除</el-button
             >
-          </EleRow>
+          </Row>
         </template>
       </SVTable>
     </template>

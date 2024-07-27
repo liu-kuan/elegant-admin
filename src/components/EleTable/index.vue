@@ -9,7 +9,7 @@
       <slot name="_filter"></slot>
     </div>
 
-    <EleRow class="header" v-if="!tableOnly">
+    <Row class="header" v-if="!tableOnly">
       <LongTextEllipsis
         :content="title"
         :max-line="1"
@@ -18,13 +18,13 @@
         v-if="title"
       />
 
-      <EleRow class="operation" v-if="$slots._operation">
+      <Row class="operation" v-if="$slots._operation">
         <slot name="_operation"></slot>
-      </EleRow>
+      </Row>
 
-      <EleSpacer />
+      <Spacer />
 
-      <EleRow>
+      <Row>
         <AutoRefresh
           v-if="_autoRefresh.exist && refresh"
           ref="autoRefreshRef"
@@ -78,8 +78,8 @@
             }
           "
         />
-      </EleRow>
-    </EleRow>
+      </Row>
+    </Row>
 
     <el-table
       :data="data"
@@ -145,14 +145,14 @@
           @start="drag = true"
           @end="drag = false"
         >
-          <EleRow v-for="column of _columns" :key="column.prop">
+          <Row v-for="column of _columns" :key="column.prop">
             <el-icon :size="18" class="drag-handle">
               <Rank />
             </el-icon>
 
             <el-checkbox :value="column.prop" :label="column.label" />
 
-            <EleSpacer />
+            <Spacer />
 
             <el-tag
               size="small"
@@ -188,7 +188,7 @@
                 />
               </el-tooltip>
             </template>
-          </EleRow>
+          </Row>
         </VueDraggable>
       </el-checkbox-group>
 
