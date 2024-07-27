@@ -5,7 +5,7 @@ Email: **kuan_liu@foxmail.com**
 
 ## 介绍
 
-ELEGANT-ADMIN 后台管理系统
+ELEGANT-ADMIN 是基于 Vue 3、TypeScript、Vite、Vue-Router、Pinia、Element Plus、SASS、UNOCSS 等前沿技术开发的后台管理系统模板
 
 ## 启动 / 打包
 
@@ -78,9 +78,7 @@ pnpm run build <mode>
 
 ### icons
 
+为保证图标样式效果一致可遵循一下做法：
+
 - 菜单栏图标使用 @element-plus/icons-vue 或 https://icones.js.org/collection/mdi
 - 主界面图标推荐使用 @ant-design/icons-vue
-
-### 开发者工具 > 模拟接口管理
-
-该页面实现接口 mock 功能,在这里配置的模拟接口可以实现返回配置的响应体而不正真请求服务器,可供开发
