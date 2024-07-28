@@ -35,6 +35,12 @@ const enum RouteNames {
   ComponentDemo_Base = 'ComponentDemo_Base',
   ComponentDemo_JsonEditor = 'ComponentDemo_JsonEditor',
   ComponentDemo_DiffText = 'ComponentDemo_DiffText',
+
+  // 多级菜单
+  MultiLevelMenu = 'MultiLevelMenu',
+  MultiLevelMenu_Level1 = 'MultiLevelMenu_Level1',
+  MultiLevelMenu_Level2 = 'MultiLevelMenu_Level2',
+  MultiLevelMenu_Level3 = 'MultiLevelMenu_Level3',
 }
 
 export default RouteNames

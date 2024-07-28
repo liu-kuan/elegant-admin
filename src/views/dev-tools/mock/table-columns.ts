@@ -1,4 +1,4 @@
-import type { SVTableColumns } from '@/components/EleTable/types'
+import type { SVTableColumns } from '@/components/Table/types'
 import type { MockApi } from '@/types/mock'
 
 export default [

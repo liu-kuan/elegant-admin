@@ -1,8 +1,10 @@
 import useDevModeStore from '@/stores/dev-mode'
-import { HomeFilled, Menu } from '@element-plus/icons-vue'
+import { HomeFilled, UserFilled } from '@element-plus/icons-vue'
 import { storeToRefs } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
+import MdiArrowULeftBottomBold from '~icons/mdi/arrow-u-left-bottom-bold'
 import MdiHelpCircle from '~icons/mdi/help-circle'
+import MdiWidgets from '~icons/mdi/widgets'
 import RouteNames from './route-names'
 
 /**
@@ -25,7 +27,7 @@ export const routes: RouteRecordRaw[] = [
   {
     path: 'components-demo',
     name: RouteNames.ComponentDemo,
-    meta: { label: '组件', icon: Menu },
+    meta: { label: '组件', icon: MdiWidgets },
     children: [
       {
         path: 'base',
@@ -54,11 +56,65 @@ export const routes: RouteRecordRaw[] = [
     ],
   },
   {
+    path: 'multi-level-menu',
+    name: RouteNames.MultiLevelMenu,
+    meta: { label: '多级菜单', icon: MdiArrowULeftBottomBold },
+    children: [
+      {
+        path: 'level1',
+        name: RouteNames.MultiLevelMenu_Level1,
+        meta: {
+          label: '一级菜单',
+        },
+        children: [
+          {
+            path: 'level2',
+            name: RouteNames.MultiLevelMenu_Level2,
+            meta: {
+              label: '二级菜单',
+            },
+            children: [
+              {
+                path: 'level3',
+                name: RouteNames.MultiLevelMenu_Level3,
+                meta: {
+                  label: '三级菜单',
+                },
+                component: () => import('@/views/multi-level-menu/index.vue'),
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: 'mine',
+    name: RouteNames.Mine,
+    meta: { label: '个人中心', icon: UserFilled, static: true },
+    redirect: { name: RouteNames.My_Info },
+    children: [
+      // {
+      //   path: 'activities',
+      //   name: RouteNames.My_Activities,
+      //   component: () => import('@/views/mine/activities/index.vue'),
+      //   meta: { label: '我的操作日志', static: true },
+      // },
+      {
+        path: 'messages',
+        name: RouteNames.My_Messages,
+        component: () => import('@/views/mine/message/index.vue'),
+        meta: { label: '消息提醒', static: true },
+      },
+    ],
+  },
+  {
     path: 'guidance',
     name: RouteNames.Guidance,
     component: () => import('@/views/guidance/index.vue'),
     meta: { label: '使用指南', icon: MdiHelpCircle },
   },
+
   // 以下页面不在侧边栏显示
   {
     path: 'split-screen',

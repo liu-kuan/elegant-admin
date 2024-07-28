@@ -23,5 +23,5 @@ const toMessage = () => {
     name: RouteNames.My_Messages,
   })
 }
-const value = ref(0)
+const value = ref(6)
 </script>

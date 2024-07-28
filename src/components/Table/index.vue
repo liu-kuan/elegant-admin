@@ -25,14 +25,6 @@
       <Spacer />
 
       <Row>
-        <AutoRefresh
-          v-if="_autoRefresh.exist && refresh"
-          ref="autoRefreshRef"
-          :duration="_autoRefresh.duration"
-          :cb="refresh"
-          style="margin-right: 10px"
-        />
-
         <SyncOutlined
           v-if="refresh"
           class="header-icon"
@@ -192,34 +184,6 @@
         </VueDraggable>
       </el-checkbox-group>
 
-      <template v-if="refresh">
-        <el-divider>定时刷新</el-divider>
-        <div class="row">
-          定时刷新
-          <el-switch
-            v-model="_autoRefresh.exist"
-            active-text="开"
-            inactive-text="关"
-            inline-prompt
-          ></el-switch>
-        </div>
-
-        <div class="row">
-          设置时长
-
-          <el-radio-group
-            v-model="_autoRefresh.duration"
-            size="small"
-            @change="autoRefreshRef?.reset"
-            :disabled="!_autoRefresh.exist"
-          >
-            <el-radio-button :value="30">30 秒</el-radio-button>
-            <el-radio-button :value="60">60 秒</el-radio-button>
-            <el-radio-button :value="120">120 秒</el-radio-button>
-          </el-radio-group>
-        </div>
-      </template>
-
       <template #footer>
         <el-button @click="onReset"> 恢复默认值 </el-button>
       </template>
@@ -262,18 +226,12 @@ const props = withDefaults(
     refresh?: () => any
     withIndex?: boolean
 
-    /**
-     * 填数字代表自动刷新间隔时间
-     * 传 false 代表不使用自动刷新功能
-     */
-    autoRefresh?: number | false
     tableOnly?: boolean
     boxed?: boolean
   }>(),
   {
     loading: false,
     withIndex: false,
-    autoRefresh: 120,
     tableOnly: false,
     boxed: false,
   },
@@ -337,20 +295,6 @@ watch(
   },
 )
 
-const _autoRefresh = reactive({
-  exist: true,
-  duration: 60,
-})
-
-const initAutoRefresh = () => {
-  _autoRefresh.exist = props.autoRefresh !== false
-  _autoRefresh.duration = props.autoRefresh || 60
-}
-
-watch(() => props.autoRefresh, initAutoRefresh, {
-  immediate: true,
-})
-
 const fontSizeArr: { value: 'large' | 'default' | 'small'; label: string }[] = [
   { value: 'large', label: '大' },
   { value: 'default', label: '中' },
@@ -364,20 +308,6 @@ const onReset = () => {
   _withIndex.value = props.withIndex
   _columns.value = deepClone(props.columns)
   columnProps.value = props.columns.map((column) => column.prop)
-  initAutoRefresh()
-}
-
-const autoRefreshRef = ref<InstanceType<typeof AutoRefresh>>()
-
-if (_autoRefresh.exist) {
-  watch(
-    () => props.loading,
-    (loading) => {
-      if (!loading) {
-        autoRefreshRef.value?.reset()
-      }
-    },
-  )
 }
 
 const slots = useSlots()
