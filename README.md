@@ -9,7 +9,7 @@ ELEGANT-ADMIN 是基于 Vue 3、TypeScript、Vite、Vue-Router、Pinia、Element
 
 ## 在线体验
 
-网址：https://elegant-admin.vercel.app/home
+网址：https://elegant-admin.vercel.app
 
 可在登录页面控制台查看预览用登录*账号，密码*
 

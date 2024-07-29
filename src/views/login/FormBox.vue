@@ -43,19 +43,17 @@
 <script setup lang="ts">
 import { useEnterKey } from '@/hooks/use-hot-key'
 import RouteNames from '@/router/route-names'
+import useMetaStore from '@/stores/meta'
+import useUserStore from '@/stores/user'
+import { sleep } from '@/utils/time'
 import { Lock, User } from '@element-plus/icons-vue'
 import { ElNotification, type FormInstance, type FormRules } from 'element-plus'
-
-import useMetaStore from '@/stores/meta'
-import { sleep } from '@/utils/time'
-
-import useUserStore from '@/stores/user'
 
 const router = useRouter()
 
 const user = reactive({
-  email: '',
-  password: '',
+  email: 'elegant@admin.com',
+  password: '123456XXXXXX',
 })
 
 const rules: FormRules<typeof user> = {
@@ -87,7 +85,7 @@ const isLoading = ref(false)
 
 console.log('游客登录')
 console.log('账号：elegant@admin.com')
-console.log('密码：123456')
+console.log('密码：123456XXXXXX')
 
 const onLogin = () => {
   form.value!.validate(async (valid) => {
@@ -95,7 +93,7 @@ const onLogin = () => {
       try {
         isLoading.value = true
         // require login api
-        if (user.email === 'elegant@admin.com' && user.password === '123456') {
+        if (user.email === 'elegant@admin.com' && user.password === '123456XXXXXX') {
           ElNotification.success({
             title: '欢迎您登录 ELEGANT-ADMIN',
             message: '祝您工作顺利！！！',
