@@ -78,6 +78,7 @@ pnpm run build <mode>
 ├── tsconfig.app.json
 ├── tsconfig.json // TypeScript 编译配置文件
 ├── tsconfig.node.json
+├── uno.config.ts // unocss 配置文件
 └── vite.config.ts // Vite 构建工具的配置
 ```
 
