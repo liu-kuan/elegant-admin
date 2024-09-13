@@ -27,7 +27,6 @@ const enum RouteNames {
 
   // DevTools
   DevTools = 'DevTools',
-  DevTools_Mock = 'DevTools_Mock',
   DevTools_Playground = 'DevTools_Playground',
 
   // 组件
@@ -35,6 +34,7 @@ const enum RouteNames {
   ComponentDemo_Base = 'ComponentDemo_Base',
   ComponentDemo_JsonEditor = 'ComponentDemo_JsonEditor',
   ComponentDemo_DiffText = 'ComponentDemo_DiffText',
+  ComponentDemo_Table = 'ComponentDemo_Table',
 
   // 多级菜单
   MultiLevelMenu = 'MultiLevelMenu',

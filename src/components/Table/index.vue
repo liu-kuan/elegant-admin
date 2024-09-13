@@ -1,15 +1,10 @@
 <template>
-  <div
-    class="sv-table"
-    :class="{
-      boxed,
-    }"
-  >
+  <div class="sv-table">
     <div class="filter" v-if="$slots._filter">
       <slot name="_filter"></slot>
     </div>
 
-    <Row class="header" v-if="!tableOnly">
+    <Row class="header" v-if="!hideHeader">
       <LongTextEllipsis
         :content="title"
         :max-line="1"
@@ -26,9 +21,9 @@
 
       <Row>
         <SyncOutlined
-          v-if="refresh"
+          v-if="onRefresh"
           class="header-icon"
-          @click="refresh"
+          @click="onRefresh"
           :spin="loading"
         />
 
@@ -42,21 +37,6 @@
               >
               <el-dropdown-item @click="exportRawDateXlsx"
                 >导出原始数据</el-dropdown-item
-              >
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-
-        <el-dropdown trigger="click">
-          <FontSizeOutlined class="header-icon" />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <SVDropdownItem
-                v-for="item of fontSizeArr"
-                :key="item.value"
-                @click="fontSize = item.value"
-                :active="fontSize === item.value"
-                >{{ item.label }}</SVDropdownItem
               >
             </el-dropdown-menu>
           </template>
@@ -80,7 +60,6 @@
         userSelect: 'initial',
       }"
       v-loading="loading"
-      :size="fontSize"
       border
       v-bind="{ ...$attrs, class: void 0, style: void 0 }"
       @selection-change="onTableSelectionChange"
@@ -200,7 +179,6 @@ import deepClone from '@/utils/deep-clone'
 import { exportJSONToXlsx } from '@/utils/xlsx'
 import {
   DownloadOutlined,
-  FontSizeOutlined,
   SettingOutlined,
   SyncOutlined,
 } from '@ant-design/icons-vue'
@@ -211,29 +189,22 @@ import { VueDraggable } from 'vue-draggable-plus'
 import MdiFormatHorizontalAlignLeft from '~icons/mdi/format-horizontal-align-left'
 import MdiFormatHorizontalAlignRight from '~icons/mdi/format-horizontal-align-right'
 import TableColumn from './TableColumn.vue'
-import { type SVTableColumns } from './types'
-
-defineOptions({
-  name: 'SVTable',
-})
+import { type TableColumns } from './types'
 
 const props = withDefaults(
   defineProps<{
     title?: string
     data: T[]
-    columns: SVTableColumns<T>
+    columns: TableColumns<T>
     loading?: boolean
-    refresh?: () => any
+    onRefresh?: () => any
     withIndex?: boolean
-
-    tableOnly?: boolean
-    boxed?: boolean
+    hideHeader?: boolean
   }>(),
   {
     loading: false,
     withIndex: false,
-    tableOnly: false,
-    boxed: false,
+    hideHeader: false,
   },
 )
 
@@ -248,7 +219,7 @@ defineSlots<
     _empty: any
     _pagination: any
   } & {
-    [K in ElementType<SVTableColumns<T>>['prop']]: (props: {
+    [K in ElementType<TableColumns<T>>['prop']]: (props: {
       row: T
       value: any
     }) => any
@@ -258,7 +229,7 @@ defineSlots<
 const selectionRows = ref<T[]>([]) as Ref<T[]>
 
 const drag = ref(false)
-const _columns = ref([]) as Ref<SVTableColumns<T>>
+const _columns = ref([]) as Ref<TableColumns<T>>
 watch(
   () => props.columns,
   (columns) => {
@@ -271,7 +242,7 @@ watch(
 )
 
 const columnProps = ref(props.columns.map((column) => column.prop)) as Ref<
-  ElementType<SVTableColumns<T>>['prop'][]
+  ElementType<TableColumns<T>>['prop'][]
 >
 
 watch(
@@ -295,13 +266,6 @@ watch(
   },
 )
 
-const fontSizeArr: { value: 'large' | 'default' | 'small'; label: string }[] = [
-  { value: 'large', label: '大' },
-  { value: 'default', label: '中' },
-  { value: 'small', label: '小' },
-]
-const fontSize = ref<'large' | 'default' | 'small'>('default')
-
 const isShowSettingDrawer = ref(false)
 
 const onReset = () => {
@@ -312,15 +276,11 @@ const onReset = () => {
 
 const slots = useSlots()
 watchEffect(() => {
-  const columnProps: ElementType<SVTableColumns<T>>['prop'][] = []
+  const columnProps: ElementType<TableColumns<T>>['prop'][] = []
   for (const column of props.columns) {
-    if (
-      slots[column.prop as keyof typeof slots] &&
-      column.render &&
-      column.formatter
-    ) {
+    if (slots[column.prop as keyof typeof slots] && column.render) {
       throw new Error(
-        `SVTableColumns 中 label = '${column.label}', prop = '${column.prop}' 的 column 同时拥有 render 或 slot 或 formatter 中超过两个，请只使用其中之一！`,
+        `TableColumns 中 label = '${column.label}', prop = '${column.prop}' 的 column 同时拥有 render 或 slot 中超过两个，请只使用其中之一！`,
       )
     }
 
@@ -331,7 +291,7 @@ watchEffect(() => {
 
   if (firstDuplicateColumnProp) {
     throw new Error(
-      `SVTable 的 columns 中的 prop 不能有重复，这里 ${firstDuplicateColumnProp} 重复了！`,
+      `Table 的 columns 中的 prop 不能有重复，这里 ${firstDuplicateColumnProp} 重复了！`,
     )
   }
 })
@@ -415,8 +375,7 @@ const exportFormatDateXlsx = () => {
             (column) => column.prop === `${key}@${_key}`,
           )
           if (column) {
-            newRow[column.label] =
-              column.formatter?.(row, value[_key]) ?? value[_key]
+            newRow[column.label] = value[_key]
           } else {
             newRow[`${key}.${_key}`] = value[_key]
           }
@@ -426,7 +385,7 @@ const exportFormatDateXlsx = () => {
 
       const column = props.columns.find((column) => column.prop === key)
       if (column) {
-        newRow[column.label] = column.formatter?.(row, value) ?? value
+        newRow[column.label] = value
       } else {
         newRow[key] = value
       }
@@ -454,12 +413,6 @@ defineExpose({
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
-
-  &.boxed {
-    padding: $spacing-s $spacing-m $spacing-m $spacing-m;
-    border: 1px solid $border-color-light;
-    border-radius: $border-radius-2;
-  }
 }
 
 :root.dark .sv-table {

@@ -36,11 +36,7 @@
 
       <LongTextEllipsis
         v-else
-        :content="
-          column.formatter?.(getPropValue(row, column.prop), row) ??
-          getPropValue(row, column.prop) ??
-          ''
-        "
+        :content="getPropValue(row, column.prop) ?? ''"
         :max-line="5"
       />
     </template>
@@ -69,10 +65,10 @@
 import type { ElementType } from '@/utils/array'
 import deepClone from '@/utils/deep-clone'
 import MdiInformation from '~icons/mdi/information'
-import type { SVTableColumns } from './types'
+import type { TableColumns } from './types'
 
 defineProps<{
-  column: ElementType<SVTableColumns<T>>
+  column: ElementType<TableColumns<T>>
   dataLength?: number
   slots?: any
 }>()

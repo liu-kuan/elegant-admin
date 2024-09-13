@@ -1,14 +1,10 @@
 import router from '@/router'
-import useDevModeStore from '@/stores/dev-mode'
 import useMetaStore from '@/stores/meta'
 import usePreferenceStore from '@/stores/preference'
 import useUserStore from '@/stores/user'
 import { RequestError } from '@/types/bug-log'
 import { CodeError, ErrorCodes } from '@/types/code-error'
-import { MockApiError, type TokenPayload } from '@/types/request'
 import axios from 'axios'
-import { jwtDecode } from 'jwt-decode'
-import { sleep } from './time'
 
 const controller = new AbortController()
 
@@ -19,29 +15,7 @@ const request = axios.create({
 })
 
 request.interceptors.request.use((config) => {
-  if (import.meta.env.DEV) {
-    const { devMode, mockApiList } = useDevModeStore()
-
-    if (devMode) {
-      const mockApi = mockApiList.find(
-        (item) =>
-          item.url === config.url &&
-          (item.method === 'ALL' ||
-            item.method === config.method?.toUpperCase()) &&
-          item.active,
-      )
-
-      if (mockApi) {
-        throw new MockApiError(mockApi)
-      }
-    }
-  }
-
-  return config
-})
-
-request.interceptors.request.use((config) => {
-  const { token, loginOut } = useUserStore()
+  const { token } = useUserStore()
   const { requestTimeout } = usePreferenceStore()
 
   if (config.timeout === void 0 || config.timeout < requestTimeout * 1000) {
@@ -49,14 +23,6 @@ request.interceptors.request.use((config) => {
   }
 
   if (token) {
-    // 判断 token 是否过期，过期的话退出登录
-    const { exp: extTime } = jwtDecode<TokenPayload>(token)
-    if (extTime * 1000 < Date.now()) {
-      controller.abort()
-      loginOut()
-      throw new Error('当前 Token 已过期，请重新登陆！')
-    }
-
     // 给请求头添加 token
     config.headers.Authorization = token
   }
@@ -104,17 +70,6 @@ request.interceptors.response.use(
 request.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error instanceof MockApiError) {
-      await sleep(error.mockApi.delay)
-      return Promise.resolve({
-        headers: {},
-        config: {
-          url: error.mockApi.url,
-        },
-        data: error.mockApi.responseBody,
-      })
-    }
-
     const { addBugLog } = useMetaStore()
     addBugLog(new RequestError('network', error, Date.now()))
 

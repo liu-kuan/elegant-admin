@@ -9,7 +9,7 @@
         <ElInput type="textarea" v-model="oldText" autosize />
       </ElFormItem>
 
-      <ElFormItem class="ml-4 flex-1" label="新文案">
+      <ElFormItem label="新文案" class="ml-4 flex-1">
         <ElInput type="textarea" v-model="newText" autosize />
       </ElFormItem>
     </ElForm>

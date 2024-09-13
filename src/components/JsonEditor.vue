@@ -1,6 +1,5 @@
 <template>
   <Vue3JsonEditor
-    v-model="modelValue"
     :show-btns="false"
     :mode="readonly ? 'view' : 'code'"
     :modes="readonly ? [] : ['view', 'code']"
@@ -21,8 +20,6 @@ withDefaults(
     readonly: false,
   },
 )
-
-const modelValue = defineModel<Object>()
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,4 @@
-import useDevModeStore from '@/stores/dev-mode'
 import { HomeFilled, UserFilled } from '@element-plus/icons-vue'
-import { storeToRefs } from 'pinia'
 import type { RouteRecordRaw } from 'vue-router'
 import MdiArrowULeftBottomBold from '~icons/mdi/arrow-u-left-bottom-bold'
 import MdiHelpCircle from '~icons/mdi/help-circle'
@@ -40,7 +38,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'json-editor',
         name: RouteNames.ComponentDemo_JsonEditor,
-        component: () => import('@/views/components-demo/JsonEditorDemo.vue'),
+        component: () => import('@/views/components-demo/json-editor-demo.vue'),
         meta: {
           label: 'JSON 编辑器',
         },
@@ -48,9 +46,17 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'diff-html',
         name: RouteNames.ComponentDemo_DiffText,
-        component: () => import('@/views/components-demo/DiffTextDemo.vue'),
+        component: () => import('@/views/components-demo/diff-text-demo.vue'),
         meta: {
           label: '文案差异展示',
+        },
+      },
+      {
+        path: 'table',
+        name: RouteNames.ComponentDemo_Table,
+        component: () => import('@/views/components-demo/table-demo.vue'),
+        meta: {
+          label: '表格组件',
         },
       },
     ],
@@ -124,33 +130,6 @@ export const routes: RouteRecordRaw[] = [
   },
 ]
 
-// 测试环境给一个页面用于测试
-if (import.meta.env.DEV) {
-  // routes.push({
-  //   path: 'dev-tools',
-  //   name: RouteNames.DevTools,
-  //   meta: { label: '开发者工具', icon: MdiTools },
-  //   children: [
-  //     {
-  //       path: 'mock',
-  //       name: RouteNames.DevTools_Mock,
-  //       component: () => import('@/views/dev-tools/mock/index.vue'),
-  //       meta: {
-  //         label: '模拟接口管理',
-  //       },
-  //     },
-  //     {
-  //       path: 'playground',
-  //       name: RouteNames.DevTools_Playground,
-  //       component: () => import('@/views/dev-tools/playground/index.vue'),
-  //       meta: {
-  //         label: '试验场',
-  //       },
-  //     },
-  //   ],
-  // })
-}
-
 // 通过一定规则匹配路由
 export const filterRoutes = (
   routes: RouteRecordRaw[],
@@ -176,17 +155,12 @@ export const filterRoutes = (
 }
 
 export const getMenuRoutes = () => {
-  const { devMode, showDevTools } = storeToRefs(useDevModeStore())
-
   return filterRoutes(routes, (route) => {
     if (route.meta!.hide) {
       return false
     }
 
-    if (
-      (route.name as string).includes(RouteNames.DevTools) &&
-      (!devMode.value || !showDevTools.value)
-    ) {
+    if ((route.name as string).includes(RouteNames.DevTools)) {
       return false
     }
 
