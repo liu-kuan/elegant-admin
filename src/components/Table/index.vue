@@ -375,7 +375,8 @@ const exportFormatDateXlsx = () => {
             (column) => column.prop === `${key}@${_key}`,
           )
           if (column) {
-            newRow[column.label] = value[_key]
+            newRow[column.label] =
+              column.exportOptions?.formatter?.(value[_key], row) ?? value[_key]
           } else {
             newRow[`${key}.${_key}`] = value[_key]
           }
@@ -385,7 +386,8 @@ const exportFormatDateXlsx = () => {
 
       const column = props.columns.find((column) => column.prop === key)
       if (column) {
-        newRow[column.label] = value
+        newRow[column.label] =
+          column.exportOptions?.formatter?.(value, row) ?? value
       } else {
         newRow[key] = value
       }

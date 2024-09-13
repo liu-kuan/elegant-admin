@@ -1,5 +1,10 @@
 import type { JSX } from 'vue/jsx-runtime'
 
+interface ExportOptions {
+  hidden: boolean // 表示导出时当前列是否隐藏
+  formatter?: (value: any, row: any) => string // 表示导出时当前列的数据格式化函数
+}
+
 /**
  * slot 和 render 不能同时存在
  */
@@ -16,6 +21,7 @@ export type TableColumns<T extends Record<string, any>> = {
   fixed?: 'left' | 'right'
   tip?: string
   tipWidth?: string | number
+  exportOptions?: ExportOptions
   /**
    * ！！！在模版中使用自动导入的组件会自动导入 css 样式，但写在 tsx 中不会自动导入，因此为了避免该问题，
    * render 中别使用自动导入的组件
