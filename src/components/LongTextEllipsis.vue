@@ -1,7 +1,7 @@
 <template>
   <div class="long-text-ellipsis">
     <template v-if="type === 'dialog'">
-      <div class="form-box" ref="contentRef">
+      <div class="content" ref="contentRef">
         {{ String(content) }}
       </div>
 
@@ -24,7 +24,7 @@
       width="50%"
     >
       <template #reference>
-        <div class="form-box" ref="contentRef">
+        <div class="content" ref="contentRef">
           {{ String(content) }}
         </div>
       </template>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup lang="tsx">
-import Dialog from '@/components/Dialog'
-import { useResizeObserver } from '@vueuse/core'
+import Dialog from '@/components/Dialog';
+import { useResizeObserver } from '@vueuse/core';
 
 const props = withDefaults(
   defineProps<{
@@ -92,7 +92,7 @@ const showMore = () => {
 </script>
 
 <style lang="scss" scoped>
-.form-box {
+.content {
   display: -webkit-box;
   overflow: hidden;
 
