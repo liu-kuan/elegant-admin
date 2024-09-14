@@ -1,10 +1,9 @@
 <template>
   <el-table-column
-    :label="column.label"
     :width="column.width"
     :min-width="column.minWidth"
     :fixed="column.fixed"
-    v-bind="column.attrs"
+    v-bind="column"
   >
     <template v-if="column.children?.length">
       <TableColumn
@@ -18,7 +17,7 @@
 
     <!-- TODO 这里不加 v-if 的话会在首次打开时重复渲染里面的内容，后续看看原因 -->
     <template
-      v-if="dataLength && !column.attrs?.type && !column.children?.length"
+      v-if="dataLength && !column?.type && !column.children?.length"
       #default="{ row }: { row: T }"
     >
       <component

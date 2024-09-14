@@ -9,6 +9,10 @@
           <ElButton>操作 1</ElButton>
           <ElButton type="primary">操作 2</ElButton>
         </template>
+
+        <template #custom:operation>
+          <ElButton size="small" type="primary">XX 操作</ElButton>
+        </template>
       </Table>
     </div>
 
@@ -63,10 +67,15 @@ const onRefresh = async () => {
 }
 
 interface Row {
-  column1: string
-  column2: string
-  column3: string
-  column4: string
+  id: string
+  name: string
+  age: string
+  gender: string
+  job: string
+  hobby: string
+  otherColumn1: string
+  otherColumn2: string
+  otherColumn3: string
 }
 
 const title = ref('表格名称')
@@ -74,64 +83,93 @@ const hideHeader = ref(false)
 
 const columns = ref<TableColumns<Row>>([
   {
-    prop: 'column1',
-    label: '列 1',
+    prop: 'id',
+    label: 'ID',
     width: 82,
     fixed: 'left',
   },
   {
-    prop: 'column2',
-    label: '列 2',
+    prop: 'name',
+    label: '用户名',
+    width: 120,
+  },
+  {
+    prop: 'age',
+    label: '年龄',
+    width: 100,
+  },
+  {
+    prop: 'gender',
+    label: '性别',
     width: 82,
   },
   {
-    prop: 'column3',
-    label: '列 3',
+    prop: 'job',
+    label: '工作',
+    width: 200,
   },
   {
-    prop: 'column4',
-    label: '列 4',
-    width: 82,
+    prop: 'hobby',
+    label: '爱好',
+    width: 200,
+  },
+  {
+    prop: 'otherColumn1',
+    label: '其他列 1',
+    width: 200,
+  },
+  {
+    prop: 'otherColumn2',
+    label: '其他列 2',
+    width: 200,
+  },
+  {
+    prop: 'otherColumn3',
+    label: '其他列 3',
+    width: 200,
+  },
+  {
+    prop: 'custom:operation',
+    label: '操作',
+    width: 100,
+    align: 'center',
     fixed: 'right',
   },
 ])
 
 const data = ref<Row[]>([
   {
-    column1: '11',
-    column2: '12',
-    column3: '13',
-    column4: '14',
+    id: '1',
+    name: '张三',
+    age: '18',
+    gender: '男',
+    job: '前端工程师',
+    hobby: '篮球',
+    otherColumn1: '其他列 1',
+    otherColumn2: '其他列 2',
+    otherColumn3: '其他列 3',
   },
   {
-    column1: '21',
-    column2: '22',
-    column3: '23',
-    column4: '24',
+    id: '2',
+    name: '李四',
+    age: '20',
+    gender: '男',
+    job: '后端工程师',
+    hobby: '足球',
+    otherColumn1: '其他列 1',
+    otherColumn2: '其他列 2',
+    otherColumn3: '其他列 3',
   },
   {
-    column1: '31',
-    column2: '32',
-    column3: '33',
-    column4: '34',
-  },
-  {
-    column1: '41',
-    column2: '42',
-    column3: '43',
-    column4: '44',
-  },
-  {
-    column1: '51',
-    column2: '52',
-    column3: '53',
-    column4: '54',
-  },
-  {
-    column1: '61',
-    column2: '62',
-    column3: '63',
-    column4: '64',
+    id: '3',
+    name: '王五',
+    age: '22',
+    gender: '男',
+    job: 'UI 设计师',
+    hobby: '画画',
+    otherColumn1: '其他列 1',
+    otherColumn2: '其他列 2',
+    otherColumn3: '其他列 3',
   },
 ])
 </script>

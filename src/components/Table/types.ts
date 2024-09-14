@@ -9,12 +9,12 @@ interface ExportOptions {
  * slot 和 render 不能同时存在
  */
 export type TableColumns<T extends Record<string, any>> = {
+  [key: string]: any
   prop:
     | (keyof T & string)
     | `${keyof T & string}@${string}`
     | `custom:${string}`
     | '_selection'
-  label: string
   width?: string | number
   minWidth?: string | number
   maxWidth?: string | number

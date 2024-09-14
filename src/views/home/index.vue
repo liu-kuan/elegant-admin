@@ -1,7 +1,11 @@
 <template>
-  <div class="card">
-    ELEGANT-ADMIN 是基于 Vue 3、TypeScript、Vite、Vue-Router、Pinia、Element
-    Plus、SASS、UNOCSS 等前沿技术开发的后台管理系统模板
+  <div class="card h-full">
+    <iframe
+      src="https://juejin.cn/post/7396118693756960794"
+      frameborder="0"
+      width="100%"
+      height="100%"
+    ></iframe>
   </div>
 </template>
 

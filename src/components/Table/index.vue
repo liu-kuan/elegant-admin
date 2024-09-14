@@ -74,10 +74,8 @@
           label: '#',
           width: 60,
           fixed: 'left',
-          attrs: {
-            type: 'index',
-            align: 'center',
-          },
+          type: 'index',
+          align: 'center',
         }"
       />
 
@@ -310,7 +308,7 @@ onActivated(() => (isActive.value = true))
 onDeactivated(() => (isActive.value = false))
 
 const selectable = computed(() =>
-  props.columns.some((column) => column.attrs?.type === 'selection'),
+  props.columns.some((column) => column?.type === 'selection'),
 )
 
 watch(shift, (shift) => {
@@ -395,11 +393,11 @@ const exportFormatDateXlsx = () => {
     result.push(newRow)
   }
 
-  exportJSONToXlsx(result, `${props.title ?? '无名表格'}_格式化数据`)
+  exportJSONToXlsx(result, `${props.title ?? '无名表格'}_格式化数据.xlsx`)
 }
 
 const exportRawDateXlsx = () => {
-  exportJSONToXlsx(props.data, `${props.title ?? '无名表格'}_原始数据`)
+  exportJSONToXlsx(props.data, `${props.title ?? '无名表格'}_原始数据.xlsx`)
 }
 // #endregion
 
