@@ -106,7 +106,7 @@ const columns = ref<TableColumns<Row>>([
   {
     prop: 'job',
     label: '工作',
-    width: 200,
+    width: 300,
   },
   {
     prop: 'hobby',
@@ -116,17 +116,17 @@ const columns = ref<TableColumns<Row>>([
   {
     prop: 'otherColumn1',
     label: '其他列 1',
-    width: 200,
+    minWidth: 300,
   },
   {
     prop: 'otherColumn2',
     label: '其他列 2',
-    width: 200,
+    minWidth: 300,
   },
   {
     prop: 'otherColumn3',
     label: '其他列 3',
-    width: 200,
+    minWidth: 300,
   },
   {
     prop: 'custom:operation',
